@@ -1,21 +1,21 @@
 from typing import Any
 
 
-class Monads():
+class Monads:
     def __init__(self, parameter, exception_message=None):
         self._parameter = parameter
         self._exception_message = exception_message
 
-    def get_exception_message(self) -> str:
+    def get_exception_message(self):
         return self._exception_message
 
-    def get_result(self) -> Any:
+    def get_result(self):
         return self._parameter
 
     def is_failed(self):
         return bool(self._exception_message)
 
-    # Pipe 
+    # Pipe
     def __or__(self, function):
         return self._bind(function)
 
@@ -32,7 +32,7 @@ class Monads():
 
 
 def square(x):
-    return x*x
+    return x * x
 
 
 def add_five(x):
@@ -47,7 +47,7 @@ def monad(par: Any):
         print(monad_result.get_result())
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     print("Chained functions without error : ")
     monad(3)
     print("String cannot be squared :")
